@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stitch In Time | Precision Tailoring</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-colour: #FAFAFA;
-            --text-colour: #0a0a0a;
+            --text-colour: #111111;
             --accent-colour: #D90429;
-            --card-bg: #ffffff;
             --dark-overlay: rgba(10, 10, 10, 0.98);
         }
 
@@ -20,11 +21,16 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--bg-colour);
+            font-family: 'Montserrat', sans-serif;
+            background-color: #faf9f6;
+            background-image: radial-gradient(circle at 50% 0%, #ffffff 0%, #edeae0 100%);
             color: var(--text-colour);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        h1, h2, h3, .tagline, .modal-title {
+            font-family: 'Playfair Display', serif;
         }
 
         .container {
@@ -41,27 +47,26 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(250, 250, 250, 0.75), rgba(250, 250, 250, 0.92)), url('1791732007541.jpg') center/cover no-repeat;
+            /* Lighter overlay to let the studio image show through */
+            background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(253, 253, 253, 0.9)), url('1791732007541.jpg') center/cover no-repeat;
             padding: 2rem;
-            border-bottom: 4px solid var(--text-colour);
+            border-bottom: 3px solid var(--text-colour);
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             margin-bottom: 0.5rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 900;
+            letter-spacing: 2px;
             color: var(--text-colour);
         }
 
         .hero .tagline {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--accent-colour);
-            font-weight: bold;
+            font-weight: 600;
             margin-bottom: 1.5rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-style: italic;
         }
 
         .hero p {
@@ -69,25 +74,24 @@
             max-width: 650px;
             margin: 0 auto;
             color: #333;
-            font-weight: 500;
+            font-weight: 400;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: 2.8rem;
             margin-bottom: 4rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 800;
+            letter-spacing: 1px;
+            font-weight: 700;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 50px;
-            height: 4px;
+            width: 60px;
+            height: 3px;
             background-color: var(--accent-colour);
-            margin: 1rem auto 0;
+            margin: 1.5rem auto 0;
         }
 
         /* Portfolio Grid */
@@ -103,19 +107,19 @@
             overflow: hidden;
             background-color: var(--text-colour);
             aspect-ratio: 3/4;
-            transition: transform 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
 
         .category-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
         }
 
         .category-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.3s ease, transform 0.5s ease;
+            transition: opacity 0.4s ease, transform 0.6s ease;
         }
 
         .category-card:hover img {
@@ -128,17 +132,17 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.92));
+            background: linear-gradient(transparent, rgba(0,0,0,0.95));
             padding: 3rem 1.5rem 1.5rem;
-            text-align: left;
+            text-align: center;
             border-bottom: 4px solid var(--accent-colour);
         }
 
         .card-label h3 {
-            font-size: 1.3rem;
-            text-transform: uppercase;
+            font-size: 1.6rem;
             letter-spacing: 1px;
-            color: #fff;
+            color: #ffffff;
+            font-weight: 400;
         }
 
         /* Modal Gallery Overlay */
@@ -157,7 +161,7 @@
 
         .modal.active {
             display: block;
-            animation: fadeIn 0.3s ease;
+            animation: fadeIn 0.4s ease;
         }
 
         @keyframes fadeIn {
@@ -176,23 +180,23 @@
         }
 
         .modal-title {
-            color: #fff;
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            color: #ffffff;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            font-weight: 400;
         }
 
         .close-btn {
             color: var(--accent-colour);
-            font-size: 3.5rem;
+            font-size: 4rem;
             cursor: pointer;
             line-height: 1;
-            font-weight: bold;
+            font-weight: 300;
             transition: color 0.3s;
         }
 
         .close-btn:hover {
-            color: #fff;
+            color: #ffffff;
         }
 
         .inner-gallery {
@@ -216,15 +220,15 @@
             bottom: 30px;
             right: 30px;
             background-color: var(--text-colour);
-            color: #fff;
-            padding: 16px 28px;
-            font-weight: bold;
+            color: #ffffff;
+            padding: 16px 32px;
+            font-weight: 500;
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 1px;
             z-index: 100;
             transition: background-color 0.3s;
-            border: 2px solid var(--text-colour);
+            border: 1px solid var(--text-colour);
         }
 
         .whatsapp-float:hover {
@@ -236,24 +240,26 @@
             text-align: center;
             padding: 3rem 2rem;
             background-color: var(--text-colour);
-            color: #888;
+            color: #888888;
             font-size: 0.95rem;
         }
 
         footer span {
-            color: #fff;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
-            .hero .tagline { font-size: 1.2rem; }
-            .modal-title { font-size: 1.5rem; }
+            .hero h1 { font-size: 3rem; }
+            .hero .tagline { font-size: 1.4rem; }
+            .section-title { font-size: 2.2rem; }
+            .modal-title { font-size: 1.8rem; }
             .inner-gallery img { height: 400px; }
             .whatsapp-float {
                 bottom: 20px;
                 right: 20px;
-                padding: 12px 20px;
-                font-size: 0.8rem;
+                padding: 14px 24px;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -301,7 +307,6 @@
         </div>
     </section>
 
-    <!-- Modal Men's Native -->
     <div id="modal-native" class="modal">
         <div class="modal-header">
             <h2 class="modal-title">Men's Native</h2>
@@ -312,7 +317,6 @@
         </div>
     </div>
 
-    <!-- Modal Women's Owambe -->
     <div id="modal-owambe" class="modal">
         <div class="modal-header">
             <h2 class="modal-title">Women's Owambe</h2>
@@ -323,7 +327,6 @@
         </div>
     </div>
 
-    <!-- Modal Urban Casual -->
     <div id="modal-urban" class="modal">
         <div class="modal-header">
             <h2 class="modal-title">Urban Casual</h2>
@@ -334,7 +337,6 @@
         </div>
     </div>
 
-    <!-- Modal Modern Chic -->
     <div id="modal-chic" class="modal">
         <div class="modal-header">
             <h2 class="modal-title">Modern Chic</h2>
@@ -363,5 +365,4 @@
         }
     </script>
 </body>
-            </html>
-            
+</html>
