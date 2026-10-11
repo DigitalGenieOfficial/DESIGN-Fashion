@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fashion Gallery & Portfolio</title>
+    <title>Stitch In Time | Precision Tailoring</title>
     <style>
         :root {
             --bg-colour: #0a0a0a;
-            --text-colour: #f4f4f4;
-            --accent-colour: #c5a059;
-            --card-bg: #1a1a1a;
+            --text-colour: #fdfdfd;
+            --accent-colour: #cca43b; /* Premium warm bronze */
+            --card-bg: #141414;
         }
 
         * {
@@ -28,66 +28,89 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
         }
 
         /* Hero Section */
         .hero {
-            height: 70vh;
+            height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=80') center/cover;
+            background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.95)), url('hero.jpg') center/cover no-repeat;
             padding: 2rem;
+            border-bottom: 2px solid var(--accent-colour);
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            color: var(--text-colour);
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: var(--accent-colour);
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            color: #ccc;
+            font-size: 1.1rem;
+            max-width: 650px;
+            color: #b3b3b3;
+            line-height: 1.8;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--accent-colour);
+            font-size: 2.2rem;
+            margin-bottom: 4rem;
+            color: var(--text-colour);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            position: relative;
         }
 
-        /* Gallery Grid */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-colour);
+            margin: 1rem auto 0;
+        }
+
+        /* Portfolio Grid */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .gallery-item {
             position: relative;
             overflow: hidden;
-            border-radius: 4px;
+            border-radius: 6px;
             aspect-ratio: 3/4;
+            background-color: var(--card-bg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
 
         .gallery-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .gallery-overlay {
@@ -95,101 +118,70 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-            padding: 2rem 1rem 1rem;
-            text-align: center;
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            background: linear-gradient(transparent, rgba(0,0,0,0.95));
+            padding: 3rem 1.5rem 1.5rem;
+            text-align: left;
         }
 
-        /* Pricing Cards */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .price-card {
-            background-color: var(--card-bg);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-radius: 4px;
-            border-top: 3px solid var(--accent-colour);
-        }
-
-        .price-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .price-card .price {
-            font-size: 2rem;
+        .gallery-overlay h3 {
             color: var(--accent-colour);
-            margin-bottom: 1.5rem;
-            font-weight: bold;
-        }
-
-        .price-card p {
-            color: #aaa;
-            font-size: 0.95rem;
-        }
-
-        /* Contact Form */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 1rem;
-            background-color: var(--card-bg);
-            border: 1px solid #333;
-            color: var(--text-colour);
-            font-family: inherit;
-            border-radius: 4px;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--accent-colour);
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            background-color: var(--accent-colour);
-            color: #000;
-            border: none;
-            font-size: 1rem;
-            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
             text-transform: uppercase;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            letter-spacing: 1px;
         }
 
-        .btn:hover {
-            background-color: #a38446;
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            padding: 16px 28px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 100;
+            transition: background-color 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
         }
 
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
             background-color: #050505;
-            color: #666;
-            font-size: 0.9rem;
+            color: #555;
+            font-size: 0.95rem;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        footer span {
+            color: var(--accent-colour);
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .container {
-                padding: 3rem 1.5rem;
+            .hero h1 { font-size: 2.8rem; }
+            .hero .tagline { font-size: 1.2rem; }
+            .container { padding: 4rem 1.5rem; }
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                padding: 14px 22px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -197,67 +189,56 @@
 <body>
 
     <header class="hero">
-        <h1>Curated Style</h1>
-        <p>Premium aesthetics featuring bespoke styling, luxury accessories, and the exclusive Afro Luxe Collection.</p>
+        <h1>Stitch In Time</h1>
+        <div class="tagline">STITCHES WITHOUT ITCHES.</div>
+        <p>Precision tailoring and modern bespoke fashion for men and women. Fast delivery, clean finishes, and zero compromise on comfort.</p>
     </header>
 
-    <section class="container" id="gallery">
-        <h2 class="section-title">The Collection</h2>
+    <section class="container" id="portfolio">
+        <h2 class="section-title">The Sample Room</h2>
         <div class="gallery-grid">
+            
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1515347619362-78d10b8bd3bd?auto=format&fit=crop&w=600&q=80" alt="Easy Chic Dresses">
-                <div class="gallery-overlay">Easy Chic Dresses</div>
+                <img src="hero2.jpg" alt="Men's Native & Traditional">
+                <div class="gallery-overlay">
+                    <h3>Men's Native</h3>
+                    <p>Senator styles, Agbada, and tailored Kaftans.</p>
+                </div>
             </div>
+
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=600&q=80" alt="The Prestige Collection">
-                <div class="gallery-overlay">The Prestige Bags</div>
+                <img src="hero3.jpg" alt="Women's Owambe & Aso-Ebi">
+                <div class="gallery-overlay">
+                    <h3>Women's Owambe</h3>
+                    <p>Intricate lace and premium event wear.</p>
+                </div>
             </div>
+
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1550639525-c97d455acf70?auto=format&fit=crop&w=600&q=80" alt="Afro Luxe Styling">
-                <div class="gallery-overlay">Afro Luxe Collection</div>
+                <img src="hero4.jpg" alt="Men's Urban Casual">
+                <div class="gallery-overlay">
+                    <h3>Urban Casual</h3>
+                    <p>Adire shirts and modern tailored sets.</p>
+                </div>
             </div>
+
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80" alt="High Heeled Shoes">
-                <div class="gallery-overlay">Designer Footwear</div>
+                <img src="https://images.unsplash.com/photo-1550639525-c97d455acf70?auto=format&fit=crop&w=600&q=80" alt="Women's Modern Chic">
+                <div class="gallery-overlay">
+                    <h3>Modern Chic</h3>
+                    <p>Everyday Ankara dresses and two-piece coords.</p>
+                </div>
             </div>
+
         </div>
     </section>
 
-    <section class="container" id="pricing">
-        <h2 class="section-title">Starting Prices</h2>
-        <div class="pricing-grid">
-            <div class="price-card">
-                <h3>Occasion Wear</h3>
-                <div class="price">From £150</div>
-                <p>Elegant dresses and tailored matching top and bottom sets for special events.</p>
-            </div>
-            <div class="price-card">
-                <h3>Luxury Accessories</h3>
-                <div class="price">From £85</div>
-                <p>Matching jewellery sets, hats, belts, and designer icons to finish the look.</p>
-            </div>
-            <div class="price-card">
-                <h3>Holiday Shop</h3>
-                <div class="price">From £120</div>
-                <p>Premium swimwear, holiday hats, and lightweight trousers for getaways.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="container" id="contact">
-        <h2 class="section-title">Enquiries</h2>
-        <form class="contact-form">
-            <input type="text" placeholder="Full Name" required>
-            <input type="email" placeholder="Email Address" required>
-            <textarea rows="5" placeholder="Your Message" required></textarea>
-            <button type="submit" class="btn">Send Message</button>
-        </form>
-    </section>
+    <!-- Update the href link with the correct WhatsApp number later -->
+    <a href="https://wa.me/2340000000000" class="whatsapp-float" target="_blank">Book a Consultation</a>
 
     <footer>
-        <p>&copy; 2026 Fashion Portfolio. All rights reserved.</p>
+        <p>&copy; 2026 <span>Stitch In Time Fashion Home</span>. All rights reserved.</p>
     </footer>
 
 </body>
 </html>
-
