@@ -6,11 +6,11 @@
     <title>Stitch In Time | Precision Tailoring</title>
     <style>
         :root {
-            --bg-colour: #ffffff;
-            --text-colour: #111111;
-            --accent-colour: #d90429; /* Deep creative red */
-            --light-grey: #f5f5f5;
-            --dark-overlay: rgba(0, 0, 0, 0.95);
+            --bg-colour: #FAFAFA;
+            --text-colour: #0a0a0a;
+            --accent-colour: #D90429;
+            --card-bg: #ffffff;
+            --dark-overlay: rgba(10, 10, 10, 0.98);
         }
 
         * {
@@ -35,18 +35,24 @@
 
         /* Hero Section */
         .hero {
-            padding: 6rem 2rem 4rem;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            background-color: var(--light-grey);
+            background: linear-gradient(rgba(250, 250, 250, 0.75), rgba(250, 250, 250, 0.92)), url('1791732007541.jpg') center/cover no-repeat;
+            padding: 2rem;
             border-bottom: 4px solid var(--text-colour);
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 0.5rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 900;
+            color: var(--text-colour);
         }
 
         .hero .tagline {
@@ -62,7 +68,8 @@
             font-size: 1.1rem;
             max-width: 650px;
             margin: 0 auto;
-            color: #444;
+            color: #333;
+            font-weight: 500;
         }
 
         .section-title {
@@ -97,6 +104,7 @@
             background-color: var(--text-colour);
             aspect-ratio: 3/4;
             transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .category-card:hover {
@@ -107,30 +115,30 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.85;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease, transform 0.5s ease;
         }
 
         .category-card:hover img {
-            opacity: 0.6;
+            opacity: 0.85;
+            transform: scale(1.05);
         }
 
         .card-label {
             position: absolute;
-            bottom: 2rem;
-            left: 2rem;
-            right: 2rem;
-            background-color: var(--bg-colour);
-            padding: 1rem;
-            text-align: center;
-            border-left: 4px solid var(--accent-colour);
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.92));
+            padding: 3rem 1.5rem 1.5rem;
+            text-align: left;
+            border-bottom: 4px solid var(--accent-colour);
         }
 
         .card-label h3 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--text-colour);
+            color: #fff;
         }
 
         /* Modal Gallery Overlay */
@@ -168,7 +176,7 @@
         }
 
         .modal-title {
-            color: var(--bg-colour);
+            color: #fff;
             font-size: 2rem;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -176,10 +184,15 @@
 
         .close-btn {
             color: var(--accent-colour);
-            font-size: 3rem;
+            font-size: 3.5rem;
             cursor: pointer;
             line-height: 1;
             font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #fff;
         }
 
         .inner-gallery {
@@ -194,7 +207,7 @@
             width: 100%;
             height: 500px;
             object-fit: cover;
-            border: 2px solid #333;
+            border: 1px solid #333;
         }
 
         /* WhatsApp Button */
@@ -203,9 +216,8 @@
             bottom: 30px;
             right: 30px;
             background-color: var(--text-colour);
-            color: var(--bg-colour);
+            color: #fff;
             padding: 16px 28px;
-            border-radius: 0;
             font-weight: bold;
             text-decoration: none;
             text-transform: uppercase;
@@ -218,7 +230,6 @@
         .whatsapp-float:hover {
             background-color: var(--accent-colour);
             border-color: var(--accent-colour);
-            color: var(--bg-colour);
         }
 
         footer {
@@ -230,11 +241,11 @@
         }
 
         footer span {
-            color: var(--bg-colour);
+            color: #fff;
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 2.8rem; }
             .hero .tagline { font-size: 1.2rem; }
             .modal-title { font-size: 1.5rem; }
             .inner-gallery img { height: 400px; }
@@ -259,33 +270,29 @@
         <h2 class="section-title">The Sample Room</h2>
         <div class="gallery-grid">
             
-            <!-- Category 1 -->
             <div class="category-card" onclick="openModal('modal-native')">
-                <img src="https://images.unsplash.com/photo-1520975954732-57dd06d15b24?auto=format&fit=crop&w=600&q=80" alt="Men's Native">
+                <img src="1791732055857.jpg" alt="Men's Native">
                 <div class="card-label">
                     <h3>Men's Native</h3>
                 </div>
             </div>
 
-            <!-- Category 2 -->
             <div class="category-card" onclick="openModal('modal-owambe')">
-                <img src="https://images.unsplash.com/photo-1502781252888-9143ba7f074e?auto=format&fit=crop&w=600&q=80" alt="Women's Owambe">
+                <img src="1791732080606.jpg" alt="Women's Owambe">
                 <div class="card-label">
                     <h3>Women's Owambe</h3>
                 </div>
             </div>
 
-            <!-- Category 3 -->
             <div class="category-card" onclick="openModal('modal-urban')">
-                <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80" alt="Urban Casual">
+                <img src="1791732103546.jpg" alt="Urban Casual">
                 <div class="card-label">
                     <h3>Urban Casual</h3>
                 </div>
             </div>
 
-            <!-- Category 4 -->
             <div class="category-card" onclick="openModal('modal-chic')">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Modern Chic">
+                <img src="1791732132862.jpg" alt="Modern Chic">
                 <div class="card-label">
                     <h3>Modern Chic</h3>
                 </div>
@@ -301,9 +308,7 @@
             <span class="close-btn" onclick="closeModal('modal-native')">&times;</span>
         </div>
         <div class="inner-gallery">
-            <img src="https://images.unsplash.com/photo-1520975954732-57dd06d15b24?auto=format&fit=crop&w=800&q=80" alt="Sample">
-            <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=800&q=80" alt="Sample">
-            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80" alt="Sample">
+            <img src="1791732055857.jpg" alt="Sample Native">
         </div>
     </div>
 
@@ -314,9 +319,7 @@
             <span class="close-btn" onclick="closeModal('modal-owambe')">&times;</span>
         </div>
         <div class="inner-gallery">
-            <img src="https://images.unsplash.com/photo-1502781252888-9143ba7f074e?auto=format&fit=crop&w=800&q=80" alt="Sample">
-            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=80" alt="Sample">
-            <img src="https://images.unsplash.com/photo-1515347619362-78d10b8bd3bd?auto=format&fit=crop&w=800&q=80" alt="Sample">
+            <img src="1791732080606.jpg" alt="Sample Owambe">
         </div>
     </div>
 
@@ -327,9 +330,7 @@
             <span class="close-btn" onclick="closeModal('modal-urban')">&times;</span>
         </div>
         <div class="inner-gallery">
-            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80" alt="Sample">
-            <img src="https://images.unsplash.com/photo-1508216334542-4fdbbc92976b?auto=format&fit=crop&w=800&q=80" alt="Sample">
-            <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=800&q=80" alt="Sample">
+            <img src="1791732103546.jpg" alt="Sample Urban Casual">
         </div>
     </div>
 
@@ -340,9 +341,7 @@
             <span class="close-btn" onclick="closeModal('modal-chic')">&times;</span>
         </div>
         <div class="inner-gallery">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Sample">
-            <img src="https://images.unsplash.com/photo-1550639525-c97d455acf70?auto=format&fit=crop&w=800&q=80" alt="Sample">
-            <img src="https://images.unsplash.com/photo-1618244972963-dbee1a7edc95?auto=format&fit=crop&w=800&q=80" alt="Sample">
+            <img src="1791732132862.jpg" alt="Sample Modern Chic">
         </div>
     </div>
 
@@ -355,13 +354,14 @@
     <script>
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevents scrolling the main page
+            document.body.style.overflow = 'hidden'; 
         }
 
         function closeModal(modalId) {
             document.getElementById(modalId).classList.remove('active');
-            document.body.style.overflow = 'auto'; // Restores main page scrolling
+            document.body.style.overflow = 'auto'; 
         }
     </script>
 </body>
-</html>
+            </html>
+            
