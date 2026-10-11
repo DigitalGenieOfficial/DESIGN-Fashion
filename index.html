@@ -6,10 +6,11 @@
     <title>Stitch In Time | Precision Tailoring</title>
     <style>
         :root {
-            --bg-colour: #0a0a0a;
-            --text-colour: #fdfdfd;
-            --accent-colour: #cca43b; /* Premium warm bronze */
-            --card-bg: #141414;
+            --bg-colour: #ffffff;
+            --text-colour: #111111;
+            --accent-colour: #d90429; /* Deep creative red */
+            --light-grey: #f5f5f5;
+            --dark-overlay: rgba(0, 0, 0, 0.95);
         }
 
         * {
@@ -23,6 +24,7 @@
             background-color: var(--bg-colour);
             color: var(--text-colour);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -33,23 +35,18 @@
 
         /* Hero Section */
         .hero {
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 6rem 2rem 4rem;
             text-align: center;
-            background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.95)), url('hero.jpg') center/cover no-repeat;
-            padding: 2rem;
-            border-bottom: 2px solid var(--accent-colour);
+            background-color: var(--light-grey);
+            border-bottom: 4px solid var(--text-colour);
         }
 
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            letter-spacing: 3px;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--text-colour);
+            font-weight: 900;
         }
 
         .hero .tagline {
@@ -57,31 +54,31 @@
             color: var(--accent-colour);
             font-weight: bold;
             margin-bottom: 1.5rem;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .hero p {
             font-size: 1.1rem;
             max-width: 650px;
-            color: #b3b3b3;
-            line-height: 1.8;
+            margin: 0 auto;
+            color: #444;
         }
 
         .section-title {
             text-align: center;
             font-size: 2.2rem;
             margin-bottom: 4rem;
-            color: var(--text-colour);
             text-transform: uppercase;
             letter-spacing: 2px;
-            position: relative;
+            font-weight: 800;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
-            height: 3px;
+            width: 50px;
+            height: 4px;
             background-color: var(--accent-colour);
             margin: 1rem auto 0;
         }
@@ -90,50 +87,114 @@
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
-        .gallery-item {
+        .category-card {
             position: relative;
+            cursor: pointer;
             overflow: hidden;
-            border-radius: 6px;
+            background-color: var(--text-colour);
             aspect-ratio: 3/4;
-            background-color: var(--card-bg);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
         }
 
-        .gallery-item img {
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.08);
+        .category-card:hover img {
+            opacity: 0.6;
         }
 
-        .gallery-overlay {
+        .card-label {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.95));
-            padding: 3rem 1.5rem 1.5rem;
-            text-align: left;
+            bottom: 2rem;
+            left: 2rem;
+            right: 2rem;
+            background-color: var(--bg-colour);
+            padding: 1rem;
+            text-align: center;
+            border-left: 4px solid var(--accent-colour);
         }
 
-        .gallery-overlay h3 {
-            color: var(--accent-colour);
+        .card-label h3 {
             font-size: 1.2rem;
-            margin-bottom: 0.3rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            color: var(--text-colour);
         }
 
-        .gallery-overlay p {
-            font-size: 0.9rem;
-            color: #ddd;
+        /* Modal Gallery Overlay */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark-overlay);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .modal-title {
+            color: var(--bg-colour);
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .close-btn {
+            color: var(--accent-colour);
+            font-size: 3rem;
+            cursor: pointer;
+            line-height: 1;
+            font-weight: bold;
+        }
+
+        .inner-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .inner-gallery img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border: 2px solid #333;
         }
 
         /* WhatsApp Button */
@@ -141,47 +202,47 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: #25D366;
-            color: white;
+            background-color: var(--text-colour);
+            color: var(--bg-colour);
             padding: 16px 28px;
-            border-radius: 50px;
+            border-radius: 0;
             font-weight: bold;
             text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
             z-index: 100;
-            transition: background-color 0.3s, transform 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            transition: background-color 0.3s;
+            border: 2px solid var(--text-colour);
         }
 
         .whatsapp-float:hover {
-            background-color: #128C7E;
-            transform: translateY(-3px);
+            background-color: var(--accent-colour);
+            border-color: var(--accent-colour);
+            color: var(--bg-colour);
         }
 
         footer {
             text-align: center;
             padding: 3rem 2rem;
-            background-color: #050505;
-            color: #555;
+            background-color: var(--text-colour);
+            color: #888;
             font-size: 0.95rem;
-            border-top: 1px solid #1a1a1a;
         }
 
         footer span {
-            color: var(--accent-colour);
+            color: var(--bg-colour);
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
+            .hero h1 { font-size: 2.5rem; }
             .hero .tagline { font-size: 1.2rem; }
-            .container { padding: 4rem 1.5rem; }
+            .modal-title { font-size: 1.5rem; }
+            .inner-gallery img { height: 400px; }
             .whatsapp-float {
                 bottom: 20px;
                 right: 20px;
-                padding: 14px 22px;
-                font-size: 0.9rem;
+                padding: 12px 20px;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -190,7 +251,7 @@
 
     <header class="hero">
         <h1>Stitch In Time</h1>
-        <div class="tagline">STITCHES WITHOUT ITCHES.</div>
+        <div class="tagline">Stitches Without Itches.</div>
         <p>Precision tailoring and modern bespoke fashion for men and women. Fast delivery, clean finishes, and zero compromise on comfort.</p>
     </header>
 
@@ -198,47 +259,109 @@
         <h2 class="section-title">The Sample Room</h2>
         <div class="gallery-grid">
             
-            <div class="gallery-item">
-                <img src="hero2.jpg" alt="Men's Native & Traditional">
-                <div class="gallery-overlay">
+            <!-- Category 1 -->
+            <div class="category-card" onclick="openModal('modal-native')">
+                <img src="https://images.unsplash.com/photo-1520975954732-57dd06d15b24?auto=format&fit=crop&w=600&q=80" alt="Men's Native">
+                <div class="card-label">
                     <h3>Men's Native</h3>
-                    <p>Senator styles, Agbada, and tailored Kaftans.</p>
                 </div>
             </div>
 
-            <div class="gallery-item">
-                <img src="hero3.jpg" alt="Women's Owambe & Aso-Ebi">
-                <div class="gallery-overlay">
+            <!-- Category 2 -->
+            <div class="category-card" onclick="openModal('modal-owambe')">
+                <img src="https://images.unsplash.com/photo-1502781252888-9143ba7f074e?auto=format&fit=crop&w=600&q=80" alt="Women's Owambe">
+                <div class="card-label">
                     <h3>Women's Owambe</h3>
-                    <p>Intricate lace and premium event wear.</p>
                 </div>
             </div>
 
-            <div class="gallery-item">
-                <img src="hero4.jpg" alt="Men's Urban Casual">
-                <div class="gallery-overlay">
+            <!-- Category 3 -->
+            <div class="category-card" onclick="openModal('modal-urban')">
+                <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80" alt="Urban Casual">
+                <div class="card-label">
                     <h3>Urban Casual</h3>
-                    <p>Adire shirts and modern tailored sets.</p>
                 </div>
             </div>
 
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1550639525-c97d455acf70?auto=format&fit=crop&w=600&q=80" alt="Women's Modern Chic">
-                <div class="gallery-overlay">
+            <!-- Category 4 -->
+            <div class="category-card" onclick="openModal('modal-chic')">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Modern Chic">
+                <div class="card-label">
                     <h3>Modern Chic</h3>
-                    <p>Everyday Ankara dresses and two-piece coords.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Update the href link with the correct WhatsApp number later -->
+    <!-- Modal Men's Native -->
+    <div id="modal-native" class="modal">
+        <div class="modal-header">
+            <h2 class="modal-title">Men's Native</h2>
+            <span class="close-btn" onclick="closeModal('modal-native')">&times;</span>
+        </div>
+        <div class="inner-gallery">
+            <img src="https://images.unsplash.com/photo-1520975954732-57dd06d15b24?auto=format&fit=crop&w=800&q=80" alt="Sample">
+            <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=800&q=80" alt="Sample">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80" alt="Sample">
+        </div>
+    </div>
+
+    <!-- Modal Women's Owambe -->
+    <div id="modal-owambe" class="modal">
+        <div class="modal-header">
+            <h2 class="modal-title">Women's Owambe</h2>
+            <span class="close-btn" onclick="closeModal('modal-owambe')">&times;</span>
+        </div>
+        <div class="inner-gallery">
+            <img src="https://images.unsplash.com/photo-1502781252888-9143ba7f074e?auto=format&fit=crop&w=800&q=80" alt="Sample">
+            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=80" alt="Sample">
+            <img src="https://images.unsplash.com/photo-1515347619362-78d10b8bd3bd?auto=format&fit=crop&w=800&q=80" alt="Sample">
+        </div>
+    </div>
+
+    <!-- Modal Urban Casual -->
+    <div id="modal-urban" class="modal">
+        <div class="modal-header">
+            <h2 class="modal-title">Urban Casual</h2>
+            <span class="close-btn" onclick="closeModal('modal-urban')">&times;</span>
+        </div>
+        <div class="inner-gallery">
+            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80" alt="Sample">
+            <img src="https://images.unsplash.com/photo-1508216334542-4fdbbc92976b?auto=format&fit=crop&w=800&q=80" alt="Sample">
+            <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=800&q=80" alt="Sample">
+        </div>
+    </div>
+
+    <!-- Modal Modern Chic -->
+    <div id="modal-chic" class="modal">
+        <div class="modal-header">
+            <h2 class="modal-title">Modern Chic</h2>
+            <span class="close-btn" onclick="closeModal('modal-chic')">&times;</span>
+        </div>
+        <div class="inner-gallery">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Sample">
+            <img src="https://images.unsplash.com/photo-1550639525-c97d455acf70?auto=format&fit=crop&w=800&q=80" alt="Sample">
+            <img src="https://images.unsplash.com/photo-1618244972963-dbee1a7edc95?auto=format&fit=crop&w=800&q=80" alt="Sample">
+        </div>
+    </div>
+
     <a href="https://wa.me/2340000000000" class="whatsapp-float" target="_blank">Book a Consultation</a>
 
     <footer>
         <p>&copy; 2026 <span>Stitch In Time Fashion Home</span>. All rights reserved.</p>
     </footer>
 
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevents scrolling the main page
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restores main page scrolling
+        }
+    </script>
 </body>
 </html>
